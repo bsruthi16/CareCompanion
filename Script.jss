@@ -1,56 +1,43 @@
-const taskForm = document.getElementById("taskForm");
-const taskList = document.getElementById("taskList");
-
-let tasks = JSON.parse(localStorage.getItem("careTasks")) || [];
-
-taskForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById("taskName").value;
-    const date = document.getElementById("taskDate").value;
-    const time = document.getElementById("taskTime").value;
-
-    const task = { name, date, time };
-
-    tasks.push(task);
-    localStorage.setItem("careTasks", JSON.stringify(tasks));
-
-    displayTasks();
-    taskForm.reset();
+// Welcome message
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Welcome to CareCompanion!");
 });
 
-function displayTasks() {
-    taskList.innerHTML = "";
+// Book Appointment
+function bookAppointment() {
+    const name = document.getElementById("patientName").value;
+    const date = document.getElementById("appointmentDate").value;
 
-    tasks.forEach((task, index) => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-            <strong>${task.name}</strong><br>
-            ${task.date} at ${task.time}
-            <span class="delete" onclick="deleteTask(${index})">❌</span>
-        `;
-        taskList.appendChild(li);
-
-        scheduleReminder(task);
-    });
-}
-
-function deleteTask(index) {
-    tasks.splice(index, 1);
-    localStorage.setItem("careTasks", JSON.stringify(tasks));
-    displayTasks();
-}
-
-function scheduleReminder(task) {
-    const taskTime = new Date(`${task.date}T${task.time}`).getTime();
-    const currentTime = new Date().getTime();
-    const delay = taskTime - currentTime;
-
-    if (delay > 0) {
-        setTimeout(() => {
-            alert(`Reminder: ${task.name}`);
-        }, delay);
+    if (name === "" || date === "") {
+        alert("Please fill in all appointment details.");
+        return;
     }
+
+    alert(`Appointment booked successfully!\nPatient: ${name}\nDate: ${date}`);
 }
 
-displayTasks();
+// Medication Reminder
+function setReminder() {
+    const medicine = document.getElementById("medicineName").value;
+    const time = document.getElementById("reminderTime").value;
+
+    if (medicine === "" || time === "") {
+        alert("Please enter medicine name and time.");
+        return;
+    }
+
+    alert(`Reminder set!\nMedicine: ${medicine}\nTime: ${time}`);
+}
+
+
+<input type="text" id="patientName" placeholder="Patient Name">
+<input type="date" id="appointmentDate">
+<button onclick="bookAppointment()">Book Appointment</button>
+
+<br><br>
+
+<input type="text" id="medicineName" placeholder="Medicine Name">
+<input type="time" id="reminderTime">
+<button onclick="setReminder()">Set Reminder</button>
+
+<script src="script.js"></script>
