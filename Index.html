@@ -2,30 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CareCompanion</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f8fb;
+            color: #333;
+        }
+        header {
+            background-color: #2c7be5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #1f5fbf;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero {
+            padding: 50px;
+            text-align: center;
+            background-color: #e8f1ff;
+        }
+        .hero h1 {
+            margin-bottom: 10px;
+        }
+        .services {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            width: 250px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        footer {
+            background-color: #2c7be5;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
 
     <header>
         <h1>CareCompanion</h1>
-        <p>Daily Care & Medication Manager</p>
+        <p>Your trusted healthcare support partner</p>
     </header>
 
-    <section class="container">
-        <h2>Add Care Task</h2>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Appointments</a>
+        <a href="#">Contact</a>
+    </nav>
 
-        <form id="taskForm">
-            <input type="text" id="taskName" placeholder="Task / Medication Name" required>
-            <input type="date" id="taskDate" required>
-            <input type="time" id="taskTime" required>
-            <button type="submit">Add Task</button>
-        </form>
-
-        <h2>Upcoming Tasks</h2>
-        <ul id="taskList"></ul>
+    <section class="hero">
+        <h1>Welcome to CareCompanion</h1>
+        <p>Helping you manage health, appointments, and care—anytime, anywhere.</p>
     </section>
 
-    <script src="script.js"></script>
+    <section class="services">
+        <div class="card">
+            <h3>Doctor Appointments</h3>
+            <p>Book and manage appointments easily.</p>
+        </div>
+        <div class="card">
+            <h3>Medication Reminders</h3>
+            <p>Never miss a dose with smart reminders.</p>
+        </div>
+        <div class="card">
+            <h3>Health Records</h3>
+            <p>Securely store and access your medical data.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 CareCompanion. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
