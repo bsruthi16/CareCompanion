@@ -1,43 +1,52 @@
-// Welcome message
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Welcome to CareCompanion!");
-});
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Body Care Companion</title>
+</head>
+<body>
 
-// Book Appointment
-function bookAppointment() {
-    const name = document.getElementById("patientName").value;
-    const date = document.getElementById("appointmentDate").value;
+<h2>🧍 Body Care Companion</h2>
+<p>Taking care of our body is important for a healthy life.</p>
 
-    if (name === "" || date === "") {
-        alert("Please fill in all appointment details.");
-        return;
+<button onclick="bodyCare()">Get Body Care Tips</button>
+
+<p id="output"></p>
+
+<script>
+function bodyCare() {
+    let name = prompt("Enter your name:");
+    let activity = prompt(
+        "Choose one option:\n" +
+        "1. Exercise\n" +
+        "2. Diet\n" +
+        "3. Sleep\n" +
+        "4. Hygiene"
+    ).toLowerCase();
+
+    let tip = "";
+
+    if (activity === "exercise") {
+        tip = "Do daily exercise or walking for at least 30 minutes.";
+    }
+    else if (activity === "diet") {
+        tip = "Eat balanced food with fruits, vegetables, and enough water.";
+    }
+    else if (activity === "sleep") {
+        tip = "Sleep 7–8 hours daily for proper body recovery.";
+    }
+    else if (activity === "hygiene") {
+        tip = "Maintain personal hygiene to stay fresh and avoid illness.";
+    }
+    else {
+        tip = "Please select a valid body care option.";
     }
 
-    alert(`Appointment booked successfully!\nPatient: ${name}\nDate: ${date}`);
+    document.getElementById("output").innerHTML =
+        "<b>Name:</b> " + name + "<br>" +
+        "<b>Body Care Area:</b> " + activity + "<br>" +
+        "<b>Tip:</b> " + tip;
 }
+</script>
 
-// Medication Reminder
-function setReminder() {
-    const medicine = document.getElementById("medicineName").value;
-    const time = document.getElementById("reminderTime").value;
-
-    if (medicine === "" || time === "") {
-        alert("Please enter medicine name and time.");
-        return;
-    }
-
-    alert(`Reminder set!\nMedicine: ${medicine}\nTime: ${time}`);
-}
-
-
-<input type="text" id="patientName" placeholder="Patient Name">
-<input type="date" id="appointmentDate">
-<button onclick="bookAppointment()">Book Appointment</button>
-
-<br><br>
-
-<input type="text" id="medicineName" placeholder="Medicine Name">
-<input type="time" id="reminderTime">
-<button onclick="setReminder()">Set Reminder</button>
-
-<script src="script.js"></script>
+</body>
+</html>
